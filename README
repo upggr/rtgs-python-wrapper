@@ -1,1 +1,7 @@
 PYTHON WRAPPER FOR RTGS COINS
+
+setup a node in the testnet:
+
+docker run --rm -it -p "8000:8000"  -p "11626:11626"  -p "11625:11625" -v "/Users/ioanniskokkinis/Projects/rtgs-python-wrapper/stellar:/opt/stellar" --name stellar stellar/quickstart --testnet
+
+
