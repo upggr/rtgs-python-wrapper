@@ -2,12 +2,12 @@ import threading
 from stellar_base.address import Address
 publickey = 'GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH'
 address = Address(address=publickey,network='testnet') # address = Address(address=publickey,network='public') for livenet
-global new_balance
-global old_balance
+
 def worker():
   threading.Timer(2.0, worker).start()
 #  print "Hello, World!"
-
+  global new_balance
+  global old_balance
   address.get() # get the updated information
   new_balance = str(address.balances)
 #  print address.balances
