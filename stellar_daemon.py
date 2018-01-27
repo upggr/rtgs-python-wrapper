@@ -6,9 +6,9 @@ def printit():
   threading.Timer(2.0, printit).start()
 #  print "Hello, World!"
   address.get() # get the updated information
-
+  blnc = str(address.balances)
   print address.balances
-  print "balances: " + str(address.balances)
+  print "balances: " + blnc
 printit()
 
 
