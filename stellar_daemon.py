@@ -7,7 +7,7 @@ def printit():
 #  print "Hello, World!"
   address.get() # get the updated information
 
-  print address.balances.balance
+  print address.balances['balance']
 
 printit()
 
