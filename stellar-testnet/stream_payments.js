@@ -1,5 +1,5 @@
 var EventSource = require('eventsource');
-var es = new EventSource('https://horizon-testnet.stellar.org/accounts/GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH/payments');
+var es = new EventSource('http://localhost:8000/accounts/GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH/payments');
 es.onmessage = function(message) {
   var result = message.data ? JSON.parse(message.data) : message;
   console.log('New payment:');
