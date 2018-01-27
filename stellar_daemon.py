@@ -6,12 +6,8 @@ address = Address(address=publickey,network='testnet') # address = Address(addre
 def worker():
   threading.Timer(2.0, worker).start()
 #  print "Hello, World!"
-  global new_balance
-  if new_balance is None:
-        new_balance = 1
-  global old_balance
-  if old_balance is None:
-        old_balance = 1
+  new_balance = ''
+  old_balance = ''
   address.get() # get the updated information
   new_balance = str(address.balances)
 #  print address.balances
