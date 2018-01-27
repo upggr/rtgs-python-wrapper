@@ -8,7 +8,7 @@ def printit():
   address.get() # get the updated information
 
   print address.balances
-
+  print "balances: " + address.balances
 printit()
 
 
