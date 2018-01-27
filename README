@@ -1,5 +1,14 @@
 PYTHON WRAPPER FOR RTGS COINS
 
+
+Stellar Node Setup.
+On a new Ubuntu  16.04 machine run :
+
+make sure you can connect using :
+ssh root@195.201.17.80 -i ~/.ssh/id_rtgs_rsa
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
 setup a node in the testnet:
 
 docker run --rm -it -p "8000:8000"  -p "11626:11626"  -p "11625:11625" -v "/Users/ioanniskokkinis/Projects/rtgs-python-wrapper/stellar:/opt/stellar" --name stellar stellar/quickstart --testnet
