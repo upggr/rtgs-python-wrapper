@@ -31,7 +31,7 @@ def startchecks():
     printword()
 #    print "Hello, World!"
 
-startchecks(watchlist);
+startchecks();
 
 
 #print "balances: " + address.balances
