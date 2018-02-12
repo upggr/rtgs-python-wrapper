@@ -13,16 +13,12 @@ def checkbalance(publickey):
 #    printword(balance)
 
 def checkValue(val):
-    initial = val
-    printword('initial value ='+initial)
-    try:
-        while True:
-            current = val
-            if current != val:
-                print 'IP has changed to: %s' % current
-            time.sleep(300)
-    except KeyboardInterrupt:
-        print("\nProccess terminated by user")
+    global previousval
+    if previousval == val:
+        printword('same')
+    else:
+        printword('changed')
+    previousval = val    
 
 
 def looparray(watchlist):
