@@ -14,8 +14,8 @@ def checkbalance(publickey):
     print "balance: for "+ publickey + " "+ balance;
 
 def looparray(watchlist):
-for pkey in watchlist:
-    checkbalance(pkey);
+    for pkey in watchlist:
+        checkbalance(pkey);
 
 
 schedule.every(2).seconds.do(looparray(watchlist))
