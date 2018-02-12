@@ -13,7 +13,7 @@ def checkbalance(publickey):
 
 def setValue(val):
     global globalVal
-    valueChanged= g_val != val
+    valueChanged= globalVal != val
     if valueChanged:
         printword("was "+val)
     globalVal = val
