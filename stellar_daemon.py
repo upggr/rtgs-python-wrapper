@@ -1,4 +1,5 @@
 import schedule
+import threading
 import time
 from stellar_base.address import Address
 watchlist = []
@@ -17,15 +18,17 @@ def looparray(watchlist):
     for pkey in watchlist:
         checkbalance(pkey);
 
-
+#looparray(watchlist)
 #schedule.every(2).seconds.do(looparray(watchlist))
 #while 1:
 #   schedule.run_pending()
 #   time.sleep(1)
 
+def startchecks():
+threading.Timer(1.0, printit).start()
+  print "Hello, World!"
 
-
-
+startchecks()
 
 
 #print "balances: " + address.balances
