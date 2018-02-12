@@ -9,14 +9,13 @@ def checkbalance(publickey):
     address.get() # get the updated information
     balance = address.balances[0]['balance']
     print "balance: for "+ publickey + " "+ balance;
-    setValue(balance)
+    checkValue(balance)
 #    printword(balance)
 
-def setValue(val):
-    global old_val
-    old_val, val = val, way_to_new_value
-    if val == old_val: printword('same')
-    else printword('changed')
+def checkValue(val):
+    initial = val
+    printword(initial)
+
 
 
 def looparray(watchlist):
