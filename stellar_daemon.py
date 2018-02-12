@@ -23,11 +23,15 @@ def createlocaldb():
                        balance TEXT, timest TEXT)
     ''')
     db.commit()
+    db.close()
 
 def logwalletbalance(wallet,balance,time):
+    cursor = db.cursor()
     cursor.execute('''INSERT INTO wallets(pkey, balance, timest)
-                  VALUES(?,?,?)''', (wallet,balance, time))        
+                  VALUES(?,?,?)''', (wallet,balance, time))
     print('data in')
+    db.commit()
+    db.close()
 
 
 
@@ -44,6 +48,6 @@ def startchecks():
 
 createlocaldb()
 startchecks();
-db.close()
+
 
 # url = 'http://195.201.17.80:8000/accounts/GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH/payments'
