@@ -14,7 +14,7 @@ def checkbalance(publickey):
 #    printword(balance)
 
 def checkValue(val):
-    if previousval == val:
+    if previousval === val:
         printword('same')
     else:
         printword('changed')
