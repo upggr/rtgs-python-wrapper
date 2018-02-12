@@ -10,7 +10,7 @@ def checkbalance(publickey):
     balance = address.balances[0]['balance']
     print "balance: for "+ publickey + " "+ balance;
 #    setValue(balance)
-printword(balance)
+    printword(balance)
 
 def setValue(val):
     global globalVal
