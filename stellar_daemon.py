@@ -12,15 +12,16 @@ def checkbalance(publickey):
     balance = address.balances[0]['balance']
 #    balance = str(address.balances)
     print "balance: for "+ publickey + " "+ balance;
-
-#schedule.every(2).seconds.do(job)
-#while 1:
-#   schedule.run_pending()
-#   time.sleep(1)
-#print len(watchlist)
+def looparray(watchlist)
 for pkey in watchlist:
-#    print pkey
     checkbalance(pkey);
+
+    
+schedule.every(2).seconds.do(looparray(watchlist))
+while 1:
+   schedule.run_pending()
+   time.sleep(1)
+
 
 
 
