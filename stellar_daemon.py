@@ -15,7 +15,7 @@ def checkbalance(publickey):
 #    printword(balance)
 
 def checkValue(val):
-
+    global variable
     if previousval == val:
         printword('same')
     else:
