@@ -12,7 +12,7 @@ def checkbalance(publickey):
     address.get() # get the updated information
     balance = address.balances[0]['balance']
     print "balance: for "+ publickey + " "+ balance;
-    logwalletbalance(publickey,balance,'test')
+    logwalletbalance(publickey,balance)
 #    checkValue(balance)
 
 #    printword(balance)
@@ -21,14 +21,14 @@ def createlocaldb():
     cursor = db.cursor()
     cursor.execute('''
     CREATE TABLE wallets(id INTEGER PRIMARY KEY, pkey TEXT,
-                       balance TEXT, timest TEXT)
+                       balance TEXT, timest DATETIME DEFAULT CURRENT_TIMESTAMP)
     ''')
     db.commit()
 
-def logwalletbalance(wallet,balance,time):
+def logwalletbalance(wallet,balance):
     cursor = db.cursor()
-    cursor.execute('''INSERT INTO wallets(pkey, balance, timest)
-                  VALUES(?,?,?)''', (wallet,balance, time))
+    cursor.execute('''INSERT INTO wallets(pkey, balance)
+                  VALUES(?,?,?)''', (wallet,balance))
     print('data in')
     db.commit()
 
