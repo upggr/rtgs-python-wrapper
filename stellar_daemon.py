@@ -14,7 +14,7 @@ def checkbalance(publickey):
 #while 1:
 #   schedule.run_pending()
 #   time.sleep(1)
-checkbalance();
+checkbalance(publickey);
 
 
 
