@@ -11,6 +11,7 @@ def checkbalance(publickey):
     address.get() # get the updated information
     balance = address.balances[0]['balance']
     print "balance: for "+ publickey + " "+ balance;
+    logwalletbalance(publickey,balance,'test')
 #    checkValue(balance)
 
 #    printword(balance)
@@ -22,6 +23,13 @@ def createlocaldb():
                        balance TEXT, timest TEXT)
     ''')
     db.commit()
+
+def logwalletbalance(wallet,balance,time):
+    cursor.execute('''INSERT INTO wallets(pkey, balance, timest)
+                  VALUES(?,?,?)''', (wallet,balance, time))        
+    print('data in')
+
+
 
 def looparray(watchlist):
     for pkey in watchlist:
