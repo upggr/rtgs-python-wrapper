@@ -2,9 +2,10 @@ import schedule
 import time
 from stellar_base.address import Address
 publickey = 'GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH'
-address = Address(address=publickey,network='testnet') # address = Address(address=publickey,network='public') for livenet
 
-def job():
+
+def checkbalance(publickey):
+    address = Address(address=publickey,network='testnet') # address = Address(address=publickey,network='public') for livenet
     address.get() # get the updated information
     balance = str(address.balances)
     print "balance: for "+ publickey + " "+ balance
@@ -13,7 +14,7 @@ def job():
 #while 1:
 #   schedule.run_pending()
 #   time.sleep(1)
-job();
+checkbalance();
 
 
 
