@@ -24,7 +24,7 @@ def looparray(watchlist):
 #   schedule.run_pending()
 #   time.sleep(1)
 def printword():
-    print "Hello, World!"
+    print "Hello, World!";
 
 def startchecks(watchlist):
     threading.Timer(1.0, printword.start()
