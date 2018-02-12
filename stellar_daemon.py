@@ -13,8 +13,8 @@ def checkbalance(publickey):
     checkValue(balance)
 #    printword(balance)
 
-def checkValue(val):
-    if previousval === val:
+def checkValue(val,previousval):
+    if previousval == val:
         printword('same')
     else:
         printword('changed')
