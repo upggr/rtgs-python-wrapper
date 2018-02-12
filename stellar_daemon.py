@@ -32,7 +32,7 @@ def logwalletbalance(wallet,balance):
     print('data in')
     db.commit()
 
-def getbalancechanges()
+def getbalancechanges():
     cursor = db.cursor()
     cursor.execute('''SELECT pkey, balance FROM wallets''')
     for row in cursor:
