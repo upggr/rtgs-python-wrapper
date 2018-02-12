@@ -18,10 +18,10 @@ def looparray(watchlist):
         checkbalance(pkey);
 
 
-schedule.every(2).seconds.do(looparray(watchlist))
-while 1:
-   schedule.run_pending()
-   time.sleep(1)
+#schedule.every(2).seconds.do(looparray(watchlist))
+#while 1:
+#   schedule.run_pending()
+#   time.sleep(1)
 
 
 
