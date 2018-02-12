@@ -28,7 +28,7 @@ def createlocaldb():
 def logwalletbalance(wallet,balance):
     cursor = db.cursor()
     cursor.execute('''INSERT INTO wallets(pkey, balance)
-                  VALUES(?,?,?)''', (wallet,balance))
+                  VALUES(?,?)''', (wallet,balance))
     print('data in')
     db.commit()
 
