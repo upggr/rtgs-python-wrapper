@@ -14,7 +14,7 @@ def job():
 #   schedule.run_pending()
 #   time.sleep(1)
 
-print publickey." ".do(job);
+print publickey;
 
 
 
