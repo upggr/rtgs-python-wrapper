@@ -9,11 +9,11 @@ def job():
     balance = str(address.balances)
     print "balance: " + balance
 
-schedule.every(2).seconds.do(job)
-while 1:
-   schedule.run_pending()
-   time.sleep(1)
-
+#schedule.every(2).seconds.do(job)
+#while 1:
+#   schedule.run_pending()
+#   time.sleep(1)
+do(job);
 
 
 
