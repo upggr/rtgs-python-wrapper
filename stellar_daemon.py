@@ -1,7 +1,7 @@
 import threading
 import sqlite3
 from stellar_base.address import Address
-#db = sqlite3.connect('data/walletsdb',check_same_thread=False)
+db_pers = sqlite3.connect('data/walletsdb',check_same_thread=False)
 db = sqlite3.connect(':memory:', check_same_thread=False)
 watchlist = []
 watchlist = ['GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH','GCTAPHEFUDNYUGHUHAIJHMFQURKRKHWJVMER7MSOKK5MTI7RYDOFF5X3']
@@ -23,7 +23,7 @@ def createlocaltempdb():
     db.commit()
 
 def createlocalpersdb():
-    cursor = db.cursor()
+    cursor = db_pers.cursor()
     cursor.execute('''
     CREATE TABLE wallets_balances(id INTEGER PRIMARY KEY, pkey TEXT,
                        balance_was TEXT,balance_is TEXT, timest DATETIME DEFAULT CURRENT_TIMESTAMP)
