@@ -7,8 +7,9 @@ publickey = 'GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH'
 def checkbalance(publickey):
     address = Address(address=publickey,network='testnet') # address = Address(address=publickey,network='public') for livenet
     address.get() # get the updated information
+    print address
     balance = str(address.balances)
-    print "balance: for "+ publickey + " "+ balance.balance;
+#    print "balance: for "+ publickey + " "+ balance.balance;
 
 #schedule.every(2).seconds.do(job)
 #while 1:
