@@ -1,8 +1,8 @@
 import threading
 import sqlite3
 from stellar_base.address import Address
-db = sqlite3.connect('data/walletsdb',check_same_thread=False)
-#db = sqlite3.connect(':memory:', check_same_thread=False)
+#db = sqlite3.connect('data/walletsdb',check_same_thread=False)
+db = sqlite3.connect(':memory:', check_same_thread=False)
 watchlist = []
 watchlist = ['GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH','GCTAPHEFUDNYUGHUHAIJHMFQURKRKHWJVMER7MSOKK5MTI7RYDOFF5X3']
 
