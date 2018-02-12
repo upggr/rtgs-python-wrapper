@@ -11,7 +11,7 @@ def checkbalance(publickey):
     address = Address(address=publickey,network='testnet') # address = Address(address=publickey,network='public') for livenet
     address.get() # get the updated information
     balance = address.balances[0]['balance']
-    print "balance: for "+ publickey + " "+ balance;
+#    print "balance: for "+ publickey + " "+ balance;
     logwalletbalance(publickey,balance)
     getbalancechanges()
 #    checkValue(balance)
