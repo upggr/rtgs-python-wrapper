@@ -35,10 +35,10 @@ def logwalletbalance(wallet,balance):
 
 def getbalancechanges():
     cursor = db.cursor()
-    cursor.execute('''SELECT pkey, balance FROM wallets''')
+    cursor.execute('''SELECT pkey, balance,timest FROM wallets''')
     for row in cursor:
     # row[0] returns the first column in the query (name), row[1] returns email column.
-        print('{0} : {1}'.format(row[0], row[1]))
+        print('{0} : {1}'.format(row[0], row[1], row[2]))
 
 
 def looparray(watchlist):
