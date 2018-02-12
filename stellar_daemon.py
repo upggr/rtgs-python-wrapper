@@ -1,7 +1,9 @@
 import schedule
 import time
 from stellar_base.address import Address
-publickey = 'GCTAPHEFUDNYUGHUHAIJHMFQURKRKHWJVMER7MSOKK5MTI7RYDOFF5X3'
+watchlist = []
+watchlist = ['GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH,GCTAPHEFUDNYUGHUHAIJHMFQURKRKHWJVMER7MSOKK5MTI7RYDOFF5X3']
+#publickey = 'GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH,GCTAPHEFUDNYUGHUHAIJHMFQURKRKHWJVMER7MSOKK5MTI7RYDOFF5X3'
 
 
 def checkbalance(publickey):
@@ -15,7 +17,8 @@ def checkbalance(publickey):
 #while 1:
 #   schedule.run_pending()
 #   time.sleep(1)
-checkbalance(publickey);
+for pkey in watchlist:
+checkbalance(pkey);
 
 
 

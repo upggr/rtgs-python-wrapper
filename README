@@ -18,12 +18,7 @@ mkdir stellar
 
 
 docker run --rm -it -p "8000:8000"  -p "11626:11626"  -p "11625:11625" -p "5432:5432"  -v "/root/stellar:/opt/stellar" --name stellar stellar/quickstart --testnet
-note postgre password ("stellar" in this test server)
+take a note of the postgres password ("stellar" in this test server)
 
 docker run -d -p "8000:8000"  -p "11626:11626"  -p "11625:11625" -p "5432:5432" -v "/root/stellar:/opt/stellar" --name stellar stellar/quickstart --testnet
-
-setup a node in the testnet:
-
-docker run --rm -it -p "8000:8000"  -p "11626:11626"  -p "11625:11625" -v "/Users/ioanniskokkinis/Projects/rtgs-python-wrapper/stellar:/opt/stellar" --name stellar stellar/quickstart --testnet
-
 
