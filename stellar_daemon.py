@@ -15,10 +15,10 @@ def setValue(val):
     global globalVal
     valueChanged= globalVal != val
     if valueChanged:
-        printword("was "+val)
+        printword("was ")
     globalVal = val
     if valueChanged:
-        printword("is "+val)
+        printword("is ")
 
 def looparray(watchlist):
     for pkey in watchlist:
