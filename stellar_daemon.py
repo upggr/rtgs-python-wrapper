@@ -18,7 +18,8 @@ def checkbalance(publickey):
 #   schedule.run_pending()
 #   time.sleep(1)
 for pkey in watchlist:
-    checkbalance(pkey);
+    print pkey
+#    checkbalance(pkey);
 
 
 
