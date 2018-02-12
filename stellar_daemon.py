@@ -13,7 +13,7 @@ def job():
 #while 1:
 #   schedule.run_pending()
 #   time.sleep(1)
-do(job);
+
 
 
 
