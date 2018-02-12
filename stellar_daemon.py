@@ -28,7 +28,7 @@ def printword():
 
 def startchecks():
     threading.Timer(1.0, startchecks).start()
-    printword()
+    looparray(watchlist)
 #    print "Hello, World!"
 
 startchecks();
