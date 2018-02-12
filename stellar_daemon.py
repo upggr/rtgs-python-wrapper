@@ -27,7 +27,7 @@ def printword():
     print "Hello, World!";
 
 def startchecks():
-    threading.Timer(1.0, startchecks.start()
+    threading.Timer(1.0, startchecks).start()
     printword()
 #    print "Hello, World!"
 
