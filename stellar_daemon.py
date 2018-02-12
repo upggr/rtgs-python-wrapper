@@ -15,7 +15,14 @@ def checkbalance(publickey):
 def checkValue(val):
     initial = val
     printword('initial value ='+initial)
-
+    try:
+        while True:
+            current = val
+            if current != val:
+                print 'IP has changed to: %s' % current
+            time.sleep(300)
+    except KeyboardInterrupt:
+        print("\nProccess terminated by user")
 
 
 def looparray(watchlist):
@@ -23,7 +30,7 @@ def looparray(watchlist):
         checkbalance(pkey);
 
 def printword(theword):
-    print "Hello, World!" + theword;
+    print theword;
 
 def startchecks():
     threading.Timer(1.0, startchecks).start()
