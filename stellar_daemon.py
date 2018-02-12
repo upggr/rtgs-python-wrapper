@@ -13,6 +13,7 @@ def checkbalance(publickey):
     balance = address.balances[0]['balance']
     print "balance: for "+ publickey + " "+ balance;
     logwalletbalance(publickey,balance)
+    getbalancechanges()
 #    checkValue(balance)
 
 #    printword(balance)
