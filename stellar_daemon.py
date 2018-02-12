@@ -23,7 +23,6 @@ def createlocaldb():
                        balance TEXT, timest TEXT)
     ''')
     db.commit()
-    db.close()
 
 def logwalletbalance(wallet,balance,time):
     cursor = db.cursor()
@@ -31,7 +30,6 @@ def logwalletbalance(wallet,balance,time):
                   VALUES(?,?,?)''', (wallet,balance, time))
     print('data in')
     db.commit()
-    db.close()
 
 
 
