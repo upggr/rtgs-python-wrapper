@@ -17,10 +17,10 @@ def checkbalance(publickey):
 #while 1:
 #   schedule.run_pending()
 #   time.sleep(1)
-print len(watchlist)
+#print len(watchlist)
 for pkey in watchlist:
-    print pkey
-#    checkbalance(pkey);
+#    print pkey
+    checkbalance(pkey);
 
 
 
