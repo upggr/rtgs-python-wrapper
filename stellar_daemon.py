@@ -13,13 +13,11 @@ def checkbalance(publickey):
 #    printword(balance)
 
 def setValue(val):
-    global globalVal
-    valueChanged = globalVal != val
-    if valueChanged:
-        printword('was')
-    globalVal = val
-    if valueChanged:
-        printword('is')
+    global old_val
+    old_val, val = val, way_to_new_value
+    if val == old_val: printword('same')
+    else printword('changed')
+
 
 def looparray(watchlist):
     for pkey in watchlist:
