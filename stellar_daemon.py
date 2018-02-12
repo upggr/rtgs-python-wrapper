@@ -1,6 +1,7 @@
 import threading
+import sqlite3
 from stellar_base.address import Address
-
+db = sqlite3.connect(':memory:')
 watchlist = []
 watchlist = ['GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH','GCTAPHEFUDNYUGHUHAIJHMFQURKRKHWJVMER7MSOKK5MTI7RYDOFF5X3']
 def checkbalance(publickey):
@@ -8,18 +9,10 @@ def checkbalance(publickey):
     address.get() # get the updated information
     balance = address.balances[0]['balance']
     print "balance: for "+ publickey + " "+ balance;
-    checkValue(balance)
+#    checkValue(balance)
 
 #    printword(balance)
 
-def checkValue(val):
-    global previousval
-    previousval = balance
-    if previousval == val:
-        printword('same')
-    else:
-        printword('changed')
-    previousval = val
 
 
 def looparray(watchlist):
@@ -34,6 +27,6 @@ def startchecks():
     looparray(watchlist)
 
 startchecks();
-
+db.close()
 
 # url = 'http://195.201.17.80:8000/accounts/GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH/payments'
