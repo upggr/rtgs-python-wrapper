@@ -8,7 +8,7 @@ def checkbalance(publickey):
     address = Address(address=publickey,network='testnet') # address = Address(address=publickey,network='public') for livenet
     address.get() # get the updated information
     balance = str(address.balances)
-    print "balance: for "+ publickey + " "+ balance[0];
+    print "balance: for "+ publickey + " "+ balance.balance;
 
 #schedule.every(2).seconds.do(job)
 #while 1:
