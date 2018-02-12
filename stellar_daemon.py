@@ -24,11 +24,11 @@ def looparray(watchlist):
 #   schedule.run_pending()
 #   time.sleep(1)
 
-def startchecks():
+def startchecks(watchlist):
     threading.Timer(1.0, looparray(watchlist)).start()
     print "Hello, World!"
 
-startchecks()
+startchecks(watchlist);
 
 
 #print "balances: " + address.balances
