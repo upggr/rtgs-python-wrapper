@@ -9,8 +9,8 @@ def checkbalance(publickey):
     address.get() # get the updated information
     balance = address.balances[0]['balance']
     print "balance: for "+ publickey + " "+ balance;
-#    setValue(balance)
-    printword(balance)
+    setValue(balance)
+#    printword(balance)
 
 def setValue(val):
     global globalVal
