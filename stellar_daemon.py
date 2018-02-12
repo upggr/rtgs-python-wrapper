@@ -23,9 +23,11 @@ def looparray(watchlist):
 #while 1:
 #   schedule.run_pending()
 #   time.sleep(1)
+def printword():
+    print "Hello, World!"
 
 def startchecks(watchlist):
-#    threading.Timer(1.0, looparray(watchlist)).start()
+    threading.Timer(1.0, printword.start()
     print "Hello, World!"
 
 startchecks(watchlist);
