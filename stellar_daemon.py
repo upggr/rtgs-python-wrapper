@@ -5,12 +5,12 @@ watchlist = []
 watchlist = ['GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH','GCTAPHEFUDNYUGHUHAIJHMFQURKRKHWJVMER7MSOKK5MTI7RYDOFF5X3']
 global previousval
 previousval = 0
-def checkbalance(publickey):
+def checkbalance(publickey,previousval):
     address = Address(address=publickey,network='testnet') # address = Address(address=publickey,network='public') for livenet
     address.get() # get the updated information
     balance = address.balances[0]['balance']
     print "balance: for "+ publickey + " "+ balance;
-    checkValue(balance)
+    checkValue(balance,previousval)
 #    printword(balance)
 
 def checkValue(val,previousval):
