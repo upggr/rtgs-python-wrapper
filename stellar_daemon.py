@@ -9,20 +9,24 @@ watchlist = ['GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH','GCTAPHE
 
 def checkbalance(publickey):
     address = Address(address=publickey,network='testnet') # address = Address(address=publickey,network='public') for livenet
-    address.get() # get the updated information
+    address.get()
     balance = address.balances[0]['balance']
-#    print "balance: for "+ publickey + " "+ balance;
     logwalletbalance(publickey,balance)
     getbalancechanges()
-#    checkValue(balance)
 
-#    printword(balance)
-
-def createlocaldb():
+def createlocaltempdb():
     cursor = db.cursor()
     cursor.execute('''
     CREATE TABLE wallets(id INTEGER PRIMARY KEY, pkey TEXT,
                        balance TEXT, timest DATETIME DEFAULT CURRENT_TIMESTAMP)
+    ''')
+    db.commit()
+
+def createlocalpersdb():
+    cursor = db.cursor()
+    cursor.execute('''
+    CREATE TABLE wallets(id INTEGER PRIMARY KEY, pkey TEXT,
+                       balance_was TEXT,balance_is TEXT, timest DATETIME DEFAULT CURRENT_TIMESTAMP)
     ''')
     db.commit()
 
@@ -52,7 +56,8 @@ def startchecks():
     threading.Timer(1.0, startchecks).start()
     looparray(watchlist)
 
-createlocaldb()
+createlocaltempdb()
+createlocalpersdb()
 startchecks();
 
 
