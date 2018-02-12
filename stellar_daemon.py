@@ -4,7 +4,7 @@ from stellar_base.address import Address
 db = sqlite3.connect(':memory:')
 watchlist = []
 watchlist = ['GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH','GCTAPHEFUDNYUGHUHAIJHMFQURKRKHWJVMER7MSOKK5MTI7RYDOFF5X3']
-createlocaldb()
+
 
 def checkbalance(publickey):
     address = Address(address=publickey,network='testnet') # address = Address(address=publickey,network='public') for livenet
@@ -34,6 +34,7 @@ def startchecks():
     threading.Timer(1.0, startchecks).start()
     looparray(watchlist)
 
+createlocaldb()
 startchecks();
 db.close()
 
