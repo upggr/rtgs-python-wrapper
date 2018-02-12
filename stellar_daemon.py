@@ -15,7 +15,7 @@ def checkbalance(publickey):
 
 #    printword(balance)
 
-def createlocaldb()
+def createlocaldb():
     cursor = db.cursor()
     cursor.execute('''
     CREATE TABLE wallets(id INTEGER PRIMARY KEY, pkey TEXT,
