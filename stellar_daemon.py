@@ -7,14 +7,13 @@ address = Address(address=publickey,network='testnet') # address = Address(addre
 def job():
     address.get() # get the updated information
     balance = str(address.balances)
-    print "balance: " + balance
+    print "balance: for "+ publickey + " "+ balance
 
 #schedule.every(2).seconds.do(job)
 #while 1:
 #   schedule.run_pending()
 #   time.sleep(1)
-job();
-print publickey;
+
 
 
 
