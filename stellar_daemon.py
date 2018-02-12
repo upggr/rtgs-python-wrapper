@@ -27,7 +27,7 @@ def printword():
     print "Hello, World!";
 
 def startchecks(watchlist):
-    threading.Timer(1.0, printword.start()
+    threading.Timer(1.0, printword().start()
     print "Hello, World!"
 
 startchecks(watchlist);
