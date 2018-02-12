@@ -4,7 +4,7 @@ from stellar_base.address import Address
 watchlist = []
 watchlist = ['GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH','GCTAPHEFUDNYUGHUHAIJHMFQURKRKHWJVMER7MSOKK5MTI7RYDOFF5X3']
 global previousval
-previousval = None
+previousval = 0
 def checkbalance(publickey):
     address = Address(address=publickey,network='testnet') # address = Address(address=publickey,network='public') for livenet
     address.get() # get the updated information
