@@ -25,7 +25,7 @@ def looparray(watchlist):
 #   time.sleep(1)
 
 def startchecks():
-    threading.Timer(1.0, printit).start()
+    threading.Timer(1.0, looparray(watchlist)).start()
     print "Hello, World!"
 
 startchecks()
