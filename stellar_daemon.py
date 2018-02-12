@@ -14,7 +14,7 @@ def checkbalance(publickey):
 
 def checkValue(val):
     initial = val
-    printword(initial)
+    printword('initial value ='+initial)
 
 
 
