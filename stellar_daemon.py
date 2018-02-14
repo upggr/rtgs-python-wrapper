@@ -20,6 +20,9 @@ def createlocaltempdb():
     CREATE TABLE wallets(id INTEGER PRIMARY KEY, pkey TEXT,
                        balance TEXT, timest DATETIME DEFAULT CURRENT_TIMESTAMP)
     ''')
+    cursor.execute('''
+    CREATE [UNIQUE] INDEX uniqness ON wallets(pkey,balance);
+    ''')
     db.commit()
 
 def createlocalpersdb():
