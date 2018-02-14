@@ -21,7 +21,7 @@ def createlocaltempdb():
                        balance TEXT, timest DATETIME DEFAULT CURRENT_TIMESTAMP)
     ''')
     cursor.execute('''
-    CREATE [UNIQUE] INDEX uniqness ON wallets(pkey,balance);
+    CREATE UNIQUE INDEX uniqness ON wallets(pkey,balance);
     ''')
     db.commit()
 
