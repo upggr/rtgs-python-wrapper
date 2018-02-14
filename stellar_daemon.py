@@ -35,7 +35,7 @@ def createlocalpersdb():
 
 def logwalletbalance(wallet,balance):
     cursor = db.cursor()
-    cursor.execute('''INSERT IGNORE INTO wallets(pkey, balance)
+    cursor.execute('''INSERT OR IGNORE INTO wallets(pkey, balance)
                   VALUES(?,?)''', (wallet,balance))
     print('data in')
     db.commit()
