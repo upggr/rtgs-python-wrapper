@@ -25,8 +25,8 @@ def createlocaltempdb():
 def createlocalpersdb():
     cursor = db_pers.cursor()
     cursor.execute('''
-    CREATE TABLE if not exists wallets_balances(id INTEGER PRIMARY KEY, pkey TEXT,
-                       balance_was TEXT,balance_is TEXT, timest DATETIME DEFAULT CURRENT_TIMESTAMP)
+    CREATE TABLE if not exists wallets_balance(id INTEGER PRIMARY KEY, pkey TEXT,
+                       balance TEXT, timest DATETIME)
     ''')
     db.commit()
 
