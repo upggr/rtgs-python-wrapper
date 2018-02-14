@@ -54,7 +54,7 @@ def printword(theword):
     print theword;
 
 def startchecks():
-    threading.Timer(1.0, startchecks).start()
+    threading.Timer(3.0, startchecks).start()
     looparray(watchlist)
 
 createlocaltempdb()
