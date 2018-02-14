@@ -17,7 +17,7 @@ def checkbalance(publickey):
 def createlocaltempdb():
     cursor = db.cursor()
     cursor.execute('''
-    CREATE TABLE wallets(id INTEGER PRIMARY KEY, pkey TEXT,
+    CREATE TABLE if not exists wallets(id INTEGER PRIMARY KEY, pkey TEXT,
                        balance TEXT, timest DATETIME DEFAULT CURRENT_TIMESTAMP)
     ''')
     cursor.execute('''
