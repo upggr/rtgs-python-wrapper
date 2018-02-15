@@ -26,7 +26,7 @@ logfile = "log.txt" #Log file path.
 
 db = sqlite3.connect(':memory:', check_same_thread=False)
 
-def checkbalance(publickey,thenetwork):
+def checkbalance(publickey):
     address = Address(address=publickey,network=thenetwork) # address = Address(address=publickey,network='public') for livenet
     address.get()
     balance = address.balances[0]['balance']
