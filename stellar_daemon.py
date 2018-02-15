@@ -1,6 +1,7 @@
 import threading
 import sqlite3
 import requests
+import time
 from stellar_base.address import Address
 db_pers = sqlite3.connect('data/walletsdb',check_same_thread=False)
 db = sqlite3.connect(':memory:', check_same_thread=False)
@@ -63,16 +64,23 @@ def processwebhooks():
         print('{0} : {1} {2}'.format(row[0], row[1], row[2]))
         callwebhook(row[0],row[1])
 
+def logwebhooktofile(wallet,balance,webhook_notified,time,thetype):
+        f = open('data/log.txt', 'w')
+        f.write(thetype +'Hello, world.')
+        f.close()
+
 def callwebhook(wallet,balance):
     r = requests.get(webhookbaseurl)
     print r.status_code
     if r.status_code == 200:
         cursor = db.cursor()
         cursor.execute('''UPDATE webhook_operations SET webhook_notified = ?, webhook_notified_timest = CURRENT_TIMESTAMP WHERE pkey = ? AND balance = ?''', (webhookbaseurl,wallet,balance))
-        print('webhook call logged in the database')
+        #print('webhook call logged in the database')
         db.commit()
+        logwebhooktofile(wallet,balance,webhookbaseurl,time.ctime(),'ok')
     else:
-        print('webhook call will not be logged in the database as it failed')
+        logwebhooktofile(wallet,balance,webhookbaseurl,time.ctime(),'error')
+        #print('webhook call will not be logged in the database as there was no response')
 
 def printbalancechanges():
     cursor = db.cursor()
