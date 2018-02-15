@@ -5,12 +5,11 @@ import json
 from datetime import datetime
 from stellar_base.address import Address
 db = sqlite3.connect(':memory:', check_same_thread=False)
-arr = json.loads("stellar_addresses.json")
-
-watchlist = []
+pkeys = json.loads("stellar_addresses.json")
+watchlist = pkeys['pkeys']
 #
 
-watchlist = ['GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH','GCTAPHEFUDNYUGHUHAIJHMFQURKRKHWJVMER7MSOKK5MTI7RYDOFF5X3','GCDR5TNCSR26GV3BR6UYSRE63VZPCTX7GLPFEKZRWFHRUL2GRC6G4Y6R']
+#watchlist = ['GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH','GCTAPHEFUDNYUGHUHAIJHMFQURKRKHWJVMER7MSOKK5MTI7RYDOFF5X3','GCDR5TNCSR26GV3BR6UYSRE63VZPCTX7GLPFEKZRWFHRUL2GRC6G4Y6R']
 webhookbaseurl = "http://electronicgr.com/"
 
 def checkbalance(publickey):
