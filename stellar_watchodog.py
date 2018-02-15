@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #title           :stellar_watchodog.py
-#description     :Watches an array of addresses (public keys) for changes to their balance.
+#description     :Watches an array of addresses (public keys) for changes to their balance and notifies a webhook with the new balance and the public key.
 #author          :Ioannis Kokkinis
 #date            :20180215
 #version         :0.1
