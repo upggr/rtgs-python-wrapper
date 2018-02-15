@@ -28,7 +28,7 @@ def createlocaltempdbs():
                        balance TEXT, timest DATETIME DEFAULT CURRENT_TIMESTAMP, webhook_notified INTEGER, webhook_notified_timest DATETIME)
     ''')
     cursor.execute('''
-    CREATE TRIGGER create_webhook_record AFTER UPDATE OF pkey ON wallets
+    CREATE TRIGGER create_webhook_record AFTER INSERT OF pkey ON wallets
     BEGIN
     INSERT OR IGNORE INTO webhook_operations(pkey,balance) VALUES(pkey,balance);
     END;
