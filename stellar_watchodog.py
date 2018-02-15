@@ -9,22 +9,25 @@
 #python_version  :2.7
 #==============================================================================
 
-# VARIABLES
-stellar_addresses_file = 'stellar_addresses.json' #Point to a remote json file as per stellar_addreses.json example
-webhookbaseurl = "http://electronicgr.com/" #Webhook base URL
-logfile = "log.txt" #Log file path.
-# END VARIABLES
-
 import threading
 import sqlite3
 import requests
 import json
 from datetime import datetime
 from stellar_base.address import Address
+
+# VARIABLES
+thenetwork = "testnet" #Change to livenet for live, or testnet for test. Alternatively point to local node.
+stellar_addresses_file = 'stellar_addresses.json' #Point to a remote json file as per stellar_addreses.json example
+webhookbaseurl = "http://electronicgr.com/" #Webhook base URL
+logfile = "log.txt" #Log file path.
+# END VARIABLES
+
+
 db = sqlite3.connect(':memory:', check_same_thread=False)
 
-def checkbalance(publickey):
-    address = Address(address=publickey,network='testnet') # address = Address(address=publickey,network='public') for livenet
+def checkbalance(publickey,thenetwork):
+    address = Address(address=publickey,network=thenetwork) # address = Address(address=publickey,network='public') for livenet
     address.get()
     balance = address.balances[0]['balance']
     logwalletbalance(publickey,balance)
@@ -105,6 +108,3 @@ def startchecks():
 
 createlocaltempdbs()
 startchecks();
-
-
-# url = 'http://195.201.17.80:8000/accounts/GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH/payments'
