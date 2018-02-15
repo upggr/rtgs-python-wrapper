@@ -35,7 +35,7 @@ def checkbalance(publickey):
     #address.get()
     urlconstruct = thenetwork+'/accounts/'+publickey
 #    print urlconstruct
-    response = json.load(urllib.urlopen(urlconstruct))
+    response = json.load(urllib2.urlopen(urlconstruct))
 #    print response
     balance = response[0].balances['balance']
     print balance
