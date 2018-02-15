@@ -17,9 +17,11 @@ from datetime import datetime
 from stellar_base.address import Address
 
 # VARIABLES
-thenetwork = "testnet" #Change to livenet for live, or testnet for test. Alternatively point to local node.
+
+thenetwork = "https://horizon-testnet.stellar.org" #URL of your node
+#thenetwork = "testnet" #Change to livenet for live, or testnet for test. Alternatively point to local node.
 stellar_addresses_file = 'stellar_addresses.json' #Point to a remote json file as per stellar_addreses.json example
-webhookbaseurl = "http://electronicgr.com/" #Webhook base URL
+webhookbaseurl = "http://electronicgr.com/" #Webhook base URL - currently checks only id the url returns 200 to mark the webhook as called.
 logfile = "log.txt" #Log file path.
 # END VARIABLES
 
@@ -27,9 +29,12 @@ logfile = "log.txt" #Log file path.
 db = sqlite3.connect(':memory:', check_same_thread=False)
 
 def checkbalance(publickey):
-    address = Address(address=publickey,network=thenetwork) # address = Address(address=publickey,network='public') for livenet
-    address.get()
-    balance = address.balances[0]['balance']
+
+    #address = Address(address=publickey,network=thenetwork) # address = Address(address=publickey,network='public') for livenet
+    #address.get()
+    with open(thenetwork+'/accounts/'+publickey) as file:
+        acctdetail = json.load(file)
+    balance = acctdetail.balances[0]['balance']
     logwalletbalance(publickey,balance)
     processwebhooks()
     printbalancechanges()
