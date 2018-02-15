@@ -20,7 +20,7 @@ from datetime import datetime
 #thenetwork = "http://195.201.17.80:8000" #URL of your node, for example https://horizon-testnet.stellar.org  (no trailing slash)
 thenetwork = "https://horizon-testnet.stellar.org" #URL of your node, for example http://195.201.17.80:8000  (no trailing slash)
 stellar_addresses_file = 'stellar_addresses.json' #Point to a remote json file as per stellar_addreses.json example
-webhookbaseurl = "http://electronicgr.com/" #Webhook base URL - currently checks only id the url returns 200 to mark the webhook as called.
+webhookbaseurl = "http://electronicgr.com/" #Webhook base URL - currently checks only id the url returns 200 to mark the webhook as called. use a trailing slash as per example
 freq = 3.0 #Update frequency in seconds x.x
 logfile = "log.txt" #Log file path.
 # END VARIABLES
@@ -99,7 +99,7 @@ def callwebhook(wallet,balance):
     print r.status_code
     if r.status_code == 200:
         cursor = db.cursor()
-        constr_webhook_url = webhookbaseurl+'/?wallet='+wallet+'&balance='+balance
+        constr_webhook_url = webhookbaseurl+'?wallet='+wallet+'&balance='+balance
         cursor.execute('''UPDATE webhook_operations SET webhook_notified = ?, webhook_notified_timest = CURRENT_TIMESTAMP WHERE pkey = ? AND balance = ?''', (constr_webhook_url,wallet,balance))
         db.commit()
         FileSave(logfile,'[INFO]  '+wallet+' balance update to : '+balance+ ' and webhook at '+constr_webhook_url+' was notified at '+ str(datetime.now()) + ' \n')
