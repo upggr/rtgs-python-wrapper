@@ -62,13 +62,13 @@ def createlocaltempdbs():
                        balance TEXT, timest DATETIME DEFAULT CURRENT_TIMESTAMP, webhook_notified INTEGER, webhook_notified_timest DATETIME)
     ''')
     cursor.execute('''
+    CREATE UNIQUE INDEX uniqness_w ON webhook_operations(pkey,balance,timest);
+    ''')
+    cursor.execute('''
     CREATE TRIGGER create_webhook_record AFTER INSERT ON wallets
     BEGIN
     INSERT OR IGNORE INTO webhook_operations(pkey,balance) VALUES(NEW.pkey,NEW.balance);
     END;
-    ''')
-    cursor.execute('''
-    CREATE UNIQUE INDEX uniqness_w ON webhook_operations(pkey,balance,timest);
     ''')
     db.commit()
 
