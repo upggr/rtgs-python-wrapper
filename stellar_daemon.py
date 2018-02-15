@@ -77,7 +77,7 @@ def printbalancechanges():
     # row[0] returns the first column in the query (name), row[1] returns email column.
         #print('{0} : {1} {2}'.format(row[0], row[1], row[2]))
 
-    cursor.execute('''SELECT pkey, balance, timest,webhook_notified,webhook_notified_timest FROM webhook_operations WHERE webhook_notified NOT LIKE 'ok'''')
+    cursor.execute('''SELECT pkey, balance, timest,webhook_notified,webhook_notified_timest FROM webhook_operations WHERE webhook_notified NOT LIKE ok''')
     for row in cursor:
             # row[0] returns the first column in the query (name), row[1] returns email column.
         print('{0} : {1} {2} {3} {4}'.format(row[0], row[1], row[2], row[3], row[4]))
