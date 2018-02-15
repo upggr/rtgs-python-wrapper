@@ -21,6 +21,7 @@ thenetwork = "http://195.201.17.80:8000"
 #thenetwork = "https://horizon-testnet.stellar.org" #URL of your node, for example http://195.201.17.80:8000  (no trailing slash)
 stellar_addresses_file = 'stellar_addresses.json' #Point to a remote json file as per stellar_addreses.json example
 webhookbaseurl = "http://electronicgr.com/" #Webhook base URL - currently checks only id the url returns 200 to mark the webhook as called.
+freq = 3.0 #Update frequency in seconds x.x
 logfile = "log.txt" #Log file path.
 # END VARIABLES
 
@@ -107,7 +108,7 @@ def startchecks():
     with open(stellar_addresses_file) as file:
         pkeys = json.load(file)
     watchlist = pkeys['pkeys']
-    threading.Timer(3.0, startchecks).start()
+    threading.Timer(freq, startchecks).start()
     looparray(watchlist)
 
 createlocaltempdbs()
