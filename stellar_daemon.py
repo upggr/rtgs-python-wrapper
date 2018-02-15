@@ -51,10 +51,7 @@ def logwalletbalance(wallet,balance):
     print('data in')
     db.commit()
 
-#def callwebhook(wallet,balance):
 
-
-#def registerwebhook(wallet,balance):
 
 
 def processwebhooks():
@@ -63,6 +60,13 @@ def processwebhooks():
     for row in cursor:
             # row[0] returns the first column in the query (name), row[1] returns email column.
         print('{0} : {1} {2}'.format(row[0], row[1], row[2]))
+        callwebhook({0},{1})
+
+def callwebhook(wallet,balance):
+    cursor = db.cursor()
+    cursor.execute('''UPDATE webhook_operations SET webhook_notified = ? WHERE pkey = ? AND balance = ?''', ('ok',wallet,balance))
+    print('webhook call logged in the database')
+    db.commit()
 
 def printbalancechanges():
     cursor = db.cursor()
