@@ -68,7 +68,7 @@ def createlocaltempdbs():
     END;
     ''')
     cursor.execute('''
-    CREATE UNIQUE INDEX uniqness ON webhook_operations(pkey,balance,timest);
+    CREATE UNIQUE INDEX uniqness_w ON webhook_operations(pkey,balance,timest);
     ''')
     db.commit()
 
