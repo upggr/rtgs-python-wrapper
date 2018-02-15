@@ -51,10 +51,10 @@ def logwalletbalance(wallet,balance):
     print('data in')
     db.commit()
 
-def callwebhook(wallet,balance):
+#def callwebhook(wallet,balance):
 
 
-def registerwebhook(wallet,balance):
+#def registerwebhook(wallet,balance):
 
 
 def processwebhooks():
