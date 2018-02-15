@@ -1,3 +1,7 @@
+stellar_addresses_file = 'stellar_addresses.json'
+webhookbaseurl = "http://electronicgr.com/"
+
+
 import threading
 import sqlite3
 import requests
@@ -5,12 +9,12 @@ import json
 from datetime import datetime
 from stellar_base.address import Address
 db = sqlite3.connect(':memory:', check_same_thread=False)
-stellar_addresses_file = 'stellar_addresses.json'
+
 
 
 #
 
-webhookbaseurl = "http://electronicgr.com/"
+
 
 def checkbalance(publickey):
     address = Address(address=publickey,network='testnet') # address = Address(address=publickey,network='public') for livenet
