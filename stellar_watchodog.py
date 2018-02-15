@@ -34,9 +34,9 @@ def checkbalance(publickey):
         req = urllib2.Request(urlconstruct)
         handle = urllib2.urlopen(req)
     except urllib2.HTTPError, e:
-        print 'Fetching of this balance failed with error code - %s.' % e.code
+        print 'error for wallet : '+publickey+' - %s.' % e.code
         if e.code == 404:
-            print 'this wallet does not exist or wallet not synced yet'
+            print 'this wallet does not exist or wallet not synced yet with this node'
         else:
             print 'unknown error contacting the node'
     else:
