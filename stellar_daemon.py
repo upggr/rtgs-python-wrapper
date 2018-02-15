@@ -63,6 +63,7 @@ def processwebhooks():
         callwebhook({0},{1})
 
 def callwebhook(wallet,balance):
+    print wallet,balance
     cursor = db.cursor()
     cursor.execute('''UPDATE webhook_operations SET webhook_notified = ? WHERE pkey = ? AND balance = ?''', ("ok",wallet,balance))
     print('webhook call logged in the database')
