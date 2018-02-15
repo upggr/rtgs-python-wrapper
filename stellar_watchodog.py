@@ -5,7 +5,7 @@
 #date            :20180215
 #version         :0.1
 #usage           :python stellar_watchodog.py
-#notes           :make sure you have installed stellar_base (pip install stellar-base )
+#notes           :
 #python_version  :2.7
 #==============================================================================
 
@@ -15,12 +15,9 @@ import requests
 import urllib2
 import json
 from datetime import datetime
-from stellar_base.address import Address
 
 # VARIABLES
-
 thenetwork = "https://horizon-testnet.stellar.org" #URL of your node
-#thenetwork = "testnet" #Change to livenet for live, or testnet for test. Alternatively point to local node.
 stellar_addresses_file = 'stellar_addresses.json' #Point to a remote json file as per stellar_addreses.json example
 webhookbaseurl = "http://electronicgr.com/" #Webhook base URL - currently checks only id the url returns 200 to mark the webhook as called.
 logfile = "log.txt" #Log file path.
@@ -30,21 +27,15 @@ logfile = "log.txt" #Log file path.
 db = sqlite3.connect(':memory:', check_same_thread=False)
 
 def checkbalance(publickey):
-
-    #address = Address(address=publickey,network=thenetwork) # address = Address(address=publickey,network='public') for livenet
-    #address.get()
     urlconstruct = thenetwork+'/accounts/'+publickey
     req = urllib2.Request(urlconstruct)
     opener = urllib2.build_opener()
     f = opener.open(req)
-#    print urlconstruct
     acctdetails = json.loads(f.read())
-#    print response
     balance = acctdetails['balances'][0]['balance']
-    print balance
-#    logwalletbalance(publickey,balance)
-#    processwebhooks()
-#    printbalancechanges()
+    logwalletbalance(publickey,balance)
+    processwebhooks()
+    printbalancechanges()
 
 def createlocaltempdbs():
     cursor = db.cursor()
