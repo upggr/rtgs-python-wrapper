@@ -34,14 +34,15 @@ def checkbalance(publickey):
     #address = Address(address=publickey,network=thenetwork) # address = Address(address=publickey,network='public') for livenet
     #address.get()
     urlconstruct = thenetwork+'/accounts/'+publickey
+    print urlconstruct
     response = urllib.urlopen(urlconstruct)
     print response
-    acctdetail = json.loads(response.read())
-    balance = acctdetail.balances[0]['balance']
-    print balance
-    logwalletbalance(publickey,balance)
-    processwebhooks()
-    printbalancechanges()
+#    acctdetail = json.loads(response.read())
+#    balance = acctdetail.balances[0]['balance']
+#    print balance
+#    logwalletbalance(publickey,balance)
+#    processwebhooks()
+#    printbalancechanges()
 
 def createlocaltempdbs():
     cursor = db.cursor()
