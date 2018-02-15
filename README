@@ -36,3 +36,8 @@ Then edit stellar_watchdog.py variables to point to this node rather than the te
 
 
 or just run python  stellar_watchdog.py to test it out of the box with 3 sample addresses i control in the testnet, and send some testnet lumen as a test to see the log populating
+
+
+Youtube demonstration!
+---
+[![demonstration](https://img.youtube.com/vi/xGE9TObRTAY/0.jpg)](https://youtu.be/xGE9TObRTAY)
