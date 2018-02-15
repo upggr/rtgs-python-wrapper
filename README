@@ -1,6 +1,5 @@
 PYTHON WRAPPER FOR RTGS COINS
 
-
 Stellar Node Setup.
 On a new Ubuntu  16.04 machine run :
 
@@ -21,4 +20,6 @@ docker run --rm -it -p "8000:8000"  -p "11626:11626"  -p "11625:11625" -p "5432:
 take a note of the postgres password ("stellar" in this test server)
 
 docker run -d -p "8000:8000"  -p "11626:11626"  -p "11625:11625" -p "5432:5432" -v "/root/stellar:/opt/stellar" --name stellar stellar/quickstart --testnet
+
+Then edit stellar_watchdog.py to point to this node rather than the testnet public server
 
