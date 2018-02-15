@@ -7,7 +7,7 @@ from stellar_base.address import Address
 db = sqlite3.connect(':memory:', check_same_thread=False)
 stellar_addresses_file = 'stellar_addresses.json'
 with open(stellar_addresses_file) as file:
-pkeys = json.load(file)
+    pkeys = json.load(file)
 watchlist = pkeys['pkeys']
 #
 
