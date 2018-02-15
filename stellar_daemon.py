@@ -1,10 +1,12 @@
 import threading
 import sqlite3
 import requests
+import json
 from datetime import datetime
 from stellar_base.address import Address
-#db_pers = sqlite3.connect('data/walletsdb',check_same_thread=False)
 db = sqlite3.connect(':memory:', check_same_thread=False)
+arr = json.loads("stellar_addresses.json")
+
 watchlist = []
 #
 
@@ -70,9 +72,9 @@ def callwebhook(wallet,balance):
         cursor = db.cursor()
         cursor.execute('''UPDATE webhook_operations SET webhook_notified = ?, webhook_notified_timest = CURRENT_TIMESTAMP WHERE pkey = ? AND balance = ?''', (webhookbaseurl,wallet,balance))
         db.commit()
-        FileSave('data/log.txt','[INFO]  '+wallet+' balance update to : '+balance+ ' and webhook at '+webhookbaseurl+' was notified at '+ str(datetime.now()) + ' \n')
+        FileSave('log.txt','[INFO]  '+wallet+' balance update to : '+balance+ ' and webhook at '+webhookbaseurl+' was notified at '+ str(datetime.now()) + ' \n')
     else:
-        FileSave('data/log.txt','[ERROR]  '+wallet+' balance update to : '+balance+ ' and webhook at '+webhookbaseurl+' could NOT be contacted at '+ str(datetime.now()) + ' \n')
+        FileSave('log.txt','[ERROR]  '+wallet+' balance update to : '+balance+ ' and webhook at '+webhookbaseurl+' could NOT be contacted at '+ str(datetime.now()) + ' \n')
 
 def printbalancechanges():
     cursor = db.cursor()
