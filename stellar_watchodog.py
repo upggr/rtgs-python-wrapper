@@ -32,7 +32,7 @@ def checkbalance(publickey):
     urlconstruct = thenetwork+'/accounts/'+publickey
     try:
         req = urllib2.Request(urlconstruct)
-         handle = urllib2.urlopen(req)
+        handle = urllib2.urlopen(req)
     except urllib2.HTTPError, e:
         print 'Fetching of this balance failed with error code - %s.' % e.code
         if e.code == 404:
