@@ -23,6 +23,16 @@ def createlocaltempdbs():
     cursor.execute('''
     CREATE UNIQUE INDEX uniqness ON wallets(pkey,balance);
     ''')
+    cursor.execute('''
+    CREATE TABLE if not exists webhook_operations(id INTEGER PRIMARY KEY, pkey TEXT,
+                       balance TEXT, timest DATETIME DEFAULT CURRENT_TIMESTAMP, webhook_notified INTEGER, webhook_notified_timest DATETIME)
+    ''')
+    cursor.execute('''
+    CREATE TRIGGER create_webhook_record AFTER UPDATE OF pkey ON wallets
+    BEGIN
+    INSERT OR IGNORE INTO webhook_operations(pkey,balance) VALUES(pkey,balance);
+    END;
+    ''')
     db.commit()
 
 def createlocalpersdb():
@@ -52,9 +62,6 @@ def getbalancechanges():
 def looparray(watchlist):
     for pkey in watchlist:
         checkbalance(pkey);
-
-def printword(theword):
-    print theword;
 
 def startchecks():
     threading.Timer(3.0, startchecks).start()
