@@ -66,7 +66,7 @@ def processwebhooks():
 
 def logwebhooktofile(wallet,balance,webhook_notified,time,thetype):
         f = open('data/log.txt', 'w')
-        f.write(thetype +'Hello, world.')
+        f.write('['+ thetype +']    '+wallet+' balance update to : '+balance+ ' and webhook at '+webhook_notified+ 'was notified at '+ time)
         f.close()
 
 def callwebhook(wallet,balance):
