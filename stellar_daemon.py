@@ -69,6 +69,10 @@ def logwebhooktofile(wallet,balance,webhook_notified,time,thetype):
         f.write('['+ thetype +']    ['+wallet+'] balance update to : ['+balance+ '] and webhook at ['+webhook_notified+'] was notified at ['+ time + ']')
         f.close()
 
+def FileSave(filename,content):
+    with open(filename, "a") as myfile:
+        myfile.write(content)
+
 def callwebhook(wallet,balance):
     r = requests.get(webhookbaseurl)
     print r.status_code
@@ -77,9 +81,9 @@ def callwebhook(wallet,balance):
         cursor.execute('''UPDATE webhook_operations SET webhook_notified = ?, webhook_notified_timest = CURRENT_TIMESTAMP WHERE pkey = ? AND balance = ?''', (webhookbaseurl,wallet,balance))
         #print('webhook call logged in the database')
         db.commit()
-        logwebhooktofile(wallet,balance,webhookbaseurl,time.ctime(),'ok')
+        FileSave('data/log.txt','[INFO]  '+wallet+' balance update to : '+balance+ ' and webhook at '+webhook_notified+' was notified at '+ time + ' \n')
     else:
-        logwebhooktofile(wallet,balance,webhookbaseurl,time.ctime(),'error')
+        FileSave('data/log.txt','[ERROR]  '+wallet+' balance update to : '+balance+ ' and webhook at '+webhook_notified+' could NOT be contacted at '+ time + ' \n')
         #print('webhook call will not be logged in the database as there was no response')
 
 def printbalancechanges():
