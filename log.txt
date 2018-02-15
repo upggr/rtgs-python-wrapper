@@ -1,5 +1,0 @@
-[INFO]  GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH balance update to : 13995.0000000 and webhook at http://electronicgr.com/ was notified at 2018-02-15 21:46:26.986318 
-[INFO]  GCTAPHEFUDNYUGHUHAIJHMFQURKRKHWJVMER7MSOKK5MTI7RYDOFF5X3 balance update to : 8205.9998800 and webhook at http://electronicgr.com/ was notified at 2018-02-15 21:46:28.550251 
-[INFO]  GCDR5TNCSR26GV3BR6UYSRE63VZPCTX7GLPFEKZRWFHRUL2GRC6G4Y6R balance update to : 7798.9999300 and webhook at http://electronicgr.com/ was notified at 2018-02-15 21:46:30.712519 
-[INFO]  GCDR5TNCSR26GV3BR6UYSRE63VZPCTX7GLPFEKZRWFHRUL2GRC6G4Y6R balance update to : 7722.9999200 and webhook at http://electronicgr.com/ was notified at 2018-02-15 21:46:59.917997 
-[INFO]  GCTAPHEFUDNYUGHUHAIJHMFQURKRKHWJVMER7MSOKK5MTI7RYDOFF5X3 balance update to : 8281.9998800 and webhook at http://electronicgr.com/ was notified at 2018-02-15 21:47:01.299595 
