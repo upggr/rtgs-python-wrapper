@@ -12,7 +12,7 @@
 import threading
 import sqlite3
 import requests
-import urllib
+import urllib.request
 import json
 from datetime import datetime
 from stellar_base.address import Address
