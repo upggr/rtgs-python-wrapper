@@ -5,7 +5,7 @@ import json
 from datetime import datetime
 from stellar_base.address import Address
 db = sqlite3.connect(':memory:', check_same_thread=False)
-pkeys = json.loads("stellar_addresses.json")
+pkeys = json.load("stellar_addresses.json")
 watchlist = pkeys['pkeys']
 #
 
