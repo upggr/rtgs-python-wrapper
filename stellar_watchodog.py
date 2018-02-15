@@ -5,7 +5,7 @@
 #date            :20180215
 #version         :0.1
 #usage           :python stellar_watchodog.py
-#notes           :make sure you have installed stellar_base
+#notes           :make sure you have installed stellar_base (pip install stellar-base )
 #python_version  :2.7
 #==============================================================================
 
