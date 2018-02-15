@@ -14,7 +14,7 @@ def checkbalance(publickey):
     logwalletbalance(publickey,balance)
     getbalancechanges()
 
-def createlocaltempdb():
+def createlocaltempdbs():
     cursor = db.cursor()
     cursor.execute('''
     CREATE TABLE if not exists wallets(id INTEGER PRIMARY KEY, pkey TEXT,
@@ -60,7 +60,7 @@ def startchecks():
     threading.Timer(3.0, startchecks).start()
     looparray(watchlist)
 
-createlocaltempdb()
+createlocaltempdbs()
 createlocalpersdb()
 startchecks();
 
