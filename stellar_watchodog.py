@@ -38,13 +38,15 @@ def checkbalance(publickey):
         if e.code == 404:
             print 'this wallet does not exist or wallet not synced yet'
         else:
-            opener = urllib2.build_opener()
-            f = opener.open(req)
-            acctdetails = json.loads(f.read())
-            balance = acctdetails['balances'][0]['balance']
-            logwalletbalance(publickey,balance)
-            processwebhooks()
-            printbalancechanges()
+            print 'unknown error contacting the node'
+    else:
+        opener = urllib2.build_opener()
+        f = opener.open(req)
+        acctdetails = json.loads(f.read())
+        balance = acctdetails['balances'][0]['balance']
+        logwalletbalance(publickey,balance)
+        processwebhooks()
+        printbalancechanges()
 
 def createlocaltempdbs():
     cursor = db.cursor()
