@@ -64,7 +64,6 @@ def processwebhooks():
         callwebhook(row[0],row[1])
 
 def callwebhook(wallet,balance):
-    #print wallet,balance
     r = requests.get(webhookbaseurl)
     print r.status_code
     if r.status_code == 200:
@@ -77,15 +76,8 @@ def callwebhook(wallet,balance):
 
 def printbalancechanges():
     cursor = db.cursor()
-#    cursor.execute('''SELECT pkey, balance,timest FROM wallets WHERE timest >= Datetime('now', '-2 seconds')''')
-    #cursor.execute('''SELECT pkey, balance, timest FROM wallets''')
-    #for row in cursor:
-    # row[0] returns the first column in the query (name), row[1] returns email column.
-        #print('{0} : {1} {2}'.format(row[0], row[1], row[2]))
     cursor.execute('''SELECT pkey, balance, timest,webhook_notified,webhook_notified_timest FROM webhook_operations''')
-    #cursor.execute('''SELECT pkey, balance, timest,webhook_notified,webhook_notified_timest FROM webhook_operations WHERE webhook_notified NOT LIKE 'ok';''')
     for row in cursor:
-            # row[0] returns the first column in the query (name), row[1] returns email column.
         print('{0} : {1} {2} {3} {4}'.format(row[0], row[1], row[2], row[3], row[4]))
 
 def looparray(watchlist):
