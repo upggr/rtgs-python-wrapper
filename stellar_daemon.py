@@ -6,7 +6,7 @@ db_pers = sqlite3.connect('data/walletsdb',check_same_thread=False)
 db = sqlite3.connect(':memory:', check_same_thread=False)
 watchlist = []
 watchlist = ['GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH','GCTAPHEFUDNYUGHUHAIJHMFQURKRKHWJVMER7MSOKK5MTI7RYDOFF5X3','GCDR5TNCSR26GV3BR6UYSRE63VZPCTX7GLPFEKZRWFHRUL2GRC6G4Y6R']
-
+webhookbaseurl = "http://electronicgr.com/"
 
 def checkbalance(publickey):
     address = Address(address=publickey,network='testnet') # address = Address(address=publickey,network='public') for livenet
@@ -65,9 +65,10 @@ def processwebhooks():
 
 def callwebhook(wallet,balance):
     print wallet,balance
-    r = requests.get("http://electronicgr.com/")
+
+    r = requests.get(webhookbaseurl)
     print r.status_code
-    if r.status_code === 200:
+    if r.status_code == 200:
         cursor = db.cursor()
         cursor.execute('''UPDATE webhook_operations SET webhook_notified = ?, webhook_notified_timest = CURRENT_TIMESTAMP WHERE pkey = ? AND balance = ?''', ('ok',wallet,balance))
         print('webhook call logged in the database')
