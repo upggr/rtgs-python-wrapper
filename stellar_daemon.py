@@ -59,7 +59,7 @@ def logwalletbalance(wallet,balance):
 
 def processwebhooks():
     cursor = db.cursor()
-    cursor.execute('''SELECT pkey, balance, timest FROM webhook_operations WHERE ifnull(webhook_notified_timest, '') = ''''')
+    cursor.execute('''SELECT pkey, balance, timest FROM webhook_operations WHERE ifnull(webhook_notified, '') = ''''')
     for row in cursor:
             # row[0] returns the first column in the query (name), row[1] returns email column.
         print('{0} : {1} {2}'.format(row[0], row[1], row[2]))
