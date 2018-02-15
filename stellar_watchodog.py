@@ -12,6 +12,7 @@
 import threading
 import sqlite3
 import requests
+import urllib
 import json
 from datetime import datetime
 from stellar_base.address import Address
@@ -33,8 +34,9 @@ def checkbalance(publickey):
     #address = Address(address=publickey,network=thenetwork) # address = Address(address=publickey,network='public') for livenet
     #address.get()
     urlconstruct = thenetwork+'/accounts/'+publickey
-    jsonurl = requests.get(urlconstruct)
-    balance = jsonurl.json().balances[0]['balance']
+    response = urllib.urlopen(urlconstruct)
+    acctdetail = json.loads(response.read())
+    balance = acctdetail.balances[0]['balance']
     logwalletbalance(publickey,balance)
     processwebhooks()
     printbalancechanges()
