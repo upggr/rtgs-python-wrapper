@@ -1,6 +1,18 @@
-stellar_addresses_file = 'stellar_addresses.json'
-webhookbaseurl = "http://electronicgr.com/"
+#!/usr/bin/env python
+#title           :stellar_watchodog.py
+#description     :Watches an array of addresses (public keys) for changes to their balance.
+#author          :Ioannis Kokkinis
+#date            :20180215
+#version         :0.1
+#usage           :python stellar_watchodog.py
+#notes           :make sure you have installed stellar_base
+#python_version  :2.7
+#==============================================================================
 
+# VARIABLES
+stellar_addresses_file = 'stellar_addresses.json' #Point to a remote json file as per stellar_addreses.json example
+webhookbaseurl = "http://electronicgr.com/" #Webhook base URL
+# END VARIABLES
 
 import threading
 import sqlite3
@@ -9,12 +21,6 @@ import json
 from datetime import datetime
 from stellar_base.address import Address
 db = sqlite3.connect(':memory:', check_same_thread=False)
-
-
-
-#
-
-
 
 def checkbalance(publickey):
     address = Address(address=publickey,network='testnet') # address = Address(address=publickey,network='public') for livenet
