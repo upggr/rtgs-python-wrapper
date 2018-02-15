@@ -37,7 +37,7 @@ def checkbalance(publickey):
 #    print urlconstruct
     response = json.load(urllib.urlopen(urlconstruct))
 #    print response
-    balance = response.balances['balance']
+    balance = response[0].balances['balance']
     print balance
 #    logwalletbalance(publickey,balance)
 #    processwebhooks()
