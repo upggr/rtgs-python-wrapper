@@ -67,7 +67,7 @@ def callwebhook(wallet,balance):
     print wallet,balance
     r = requests.get("http://electronicgr.com/")
     print r.status_code
-    if r.status_code == '400':
+    if r.status_code == '200':
         cursor = db.cursor()
         cursor.execute('''UPDATE webhook_operations SET webhook_notified = ?, webhook_notified_timest = CURRENT_TIMESTAMP WHERE pkey = ? AND balance = ?''', ('ok',wallet,balance))
         print('webhook call logged in the database')
