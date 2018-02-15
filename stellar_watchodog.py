@@ -67,6 +67,9 @@ def createlocaltempdbs():
     INSERT OR IGNORE INTO webhook_operations(pkey,balance) VALUES(NEW.pkey,NEW.balance);
     END;
     ''')
+    cursor.execute('''
+    CREATE UNIQUE INDEX uniqness ON webhook_operations(pkey,balance,timest);
+    ''')
     db.commit()
 
 def logwalletbalance(wallet,balance):
