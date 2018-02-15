@@ -30,7 +30,7 @@ def createlocaltempdbs():
     cursor.execute('''
     CREATE TRIGGER create_webhook_record AFTER INSERT ON wallets
     BEGIN
-    INSERT OR IGNORE INTO webhook_operations(pkey,balance) VALUES(pkey,balance);
+    INSERT OR IGNORE INTO webhook_operations(pkey,balance) VALUES(NEW.pkey,NEW.balance);
     END;
     ''')
     db.commit()
