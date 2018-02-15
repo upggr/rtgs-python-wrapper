@@ -40,7 +40,7 @@ def checkbalance(publickey):
 #    print urlconstruct
     acctdetails = json.loads(f.read())
 #    print response
-    balance = acctdetails['balances']['balance']
+    balance = acctdetails['balances'][0]['balance']
     print balance
 #    logwalletbalance(publickey,balance)
 #    processwebhooks()
