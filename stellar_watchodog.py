@@ -20,7 +20,7 @@ from datetime import datetime
 #thenetwork = "http://195.201.17.80:8000" #URL of your node, for example https://horizon-testnet.stellar.org  (no trailing slash)
 thenetwork = "https://horizon-testnet.stellar.org" #URL of your node, for example http://195.201.17.80:8000  (no trailing slash)
 stellar_addresses_file = 'stellar_addresses.json' #Point to a remote json file as per stellar_addreses.json example
-webhookbaseurl = "http://electronicgr.com/" #Webhook base URL - currently checks only id the url returns 200 to mark the webhook as called. use a trailing slash as per example
+webhookbaseurl = "http://electronicgr.com/" #Webhook base URL - currently checks only if the url returns 200 to mark the webhook as called but can be modified to look for a json response... use a trailing slash as per example
 freq = 3.0 #Update frequency in seconds x.x
 logfile = "log.txt" #Log file path.
 # END VARIABLES
