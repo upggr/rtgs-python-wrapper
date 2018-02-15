@@ -60,7 +60,7 @@ def processwebhooks():
     for row in cursor:
             # row[0] returns the first column in the query (name), row[1] returns email column.
         print('{0} : {1} {2}'.format(row[0], row[1], row[2]))
-        callwebhook({0},{1})
+        callwebhook(row[0],row[1])
 
 def callwebhook(wallet,balance):
     print wallet,balance
