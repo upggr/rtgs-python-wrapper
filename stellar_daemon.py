@@ -3,9 +3,11 @@ import sqlite3
 import requests
 from datetime import datetime
 from stellar_base.address import Address
-db_pers = sqlite3.connect('data/walletsdb',check_same_thread=False)
+#db_pers = sqlite3.connect('data/walletsdb',check_same_thread=False)
 db = sqlite3.connect(':memory:', check_same_thread=False)
 watchlist = []
+#
+
 watchlist = ['GCQ2WFN74IOHNRCKS5HWQGM73QVOCYRX5VN53FFQREJDHJ7BM5U7PJCH','GCTAPHEFUDNYUGHUHAIJHMFQURKRKHWJVMER7MSOKK5MTI7RYDOFF5X3','GCDR5TNCSR26GV3BR6UYSRE63VZPCTX7GLPFEKZRWFHRUL2GRC6G4Y6R']
 webhookbaseurl = "http://electronicgr.com/"
 
@@ -38,14 +40,6 @@ def createlocaltempdbs():
     ''')
     db.commit()
 
-def createlocalpersdb():
-    cursor = db_pers.cursor()
-    cursor.execute('''
-    CREATE TABLE if not exists wallets_balance(id INTEGER PRIMARY KEY, pkey TEXT,
-                       balance TEXT, timest DATETIME)
-    ''')
-    db.commit()
-
 def logwalletbalance(wallet,balance):
     cursor = db.cursor()
     cursor.execute('''INSERT OR IGNORE INTO wallets(pkey, balance)
@@ -53,14 +47,10 @@ def logwalletbalance(wallet,balance):
     print('data in')
     db.commit()
 
-
-
-
 def processwebhooks():
     cursor = db.cursor()
     cursor.execute('''SELECT pkey, balance, timest FROM webhook_operations where ifnull(length(webhook_notified), 0) = 0''')
     for row in cursor:
-            # row[0] returns the first column in the query (name), row[1] returns email column.
         print('{0} : {1} {2}'.format(row[0], row[1], row[2]))
         callwebhook(row[0],row[1])
 
@@ -79,12 +69,10 @@ def callwebhook(wallet,balance):
     if r.status_code == 200:
         cursor = db.cursor()
         cursor.execute('''UPDATE webhook_operations SET webhook_notified = ?, webhook_notified_timest = CURRENT_TIMESTAMP WHERE pkey = ? AND balance = ?''', (webhookbaseurl,wallet,balance))
-        #print('webhook call logged in the database')
         db.commit()
         FileSave('data/log.txt','[INFO]  '+wallet+' balance update to : '+balance+ ' and webhook at '+webhookbaseurl+' was notified at '+ str(datetime.now()) + ' \n')
     else:
         FileSave('data/log.txt','[ERROR]  '+wallet+' balance update to : '+balance+ ' and webhook at '+webhookbaseurl+' could NOT be contacted at '+ str(datetime.now()) + ' \n')
-        #print('webhook call will not be logged in the database as there was no response')
 
 def printbalancechanges():
     cursor = db.cursor()
@@ -101,7 +89,6 @@ def startchecks():
     looparray(watchlist)
 
 createlocaltempdbs()
-createlocalpersdb()
 startchecks();
 
 
