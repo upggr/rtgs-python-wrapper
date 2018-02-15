@@ -33,10 +33,8 @@ def checkbalance(publickey):
     #address = Address(address=publickey,network=thenetwork) # address = Address(address=publickey,network='public') for livenet
     #address.get()
     urlconstruct = thenetwork+'/accounts/'+publickey
-    print urlconstruct
-    with open(urlconstruct) as file:
-        acctdetail = json.load(file)
-    balance = acctdetail.balances[0]['balance']
+    jsonurl = requests.get(urlconstruct)
+    balance = jsonurl.json().balances[0]['balance']
     logwalletbalance(publickey,balance)
     processwebhooks()
     printbalancechanges()
