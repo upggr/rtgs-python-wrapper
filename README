@@ -23,3 +23,5 @@ docker run -d -p "8000:8000"  -p "11626:11626"  -p "11625:11625" -p "5432:5432" 
 
 Then edit stellar_watchdog.py variables to point to this node rather than the testnet or public servers
 
+
+or just run pyton  stellar_watchdog.py to test it out of the box with 3 sample addresses i control in the testnet, and send some testnet lumen as a test to see the log populating
