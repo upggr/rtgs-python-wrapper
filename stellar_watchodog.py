@@ -17,7 +17,8 @@ import json
 from datetime import datetime
 
 # VARIABLES
-thenetwork = "https://horizon-testnet.stellar.org" #URL of your node
+thenetwork = "http://195.201.17.80:8000"
+#thenetwork = "https://horizon-testnet.stellar.org" #URL of your node, for example http://195.201.17.80:8000  (no trailing slash)
 stellar_addresses_file = 'stellar_addresses.json' #Point to a remote json file as per stellar_addreses.json example
 webhookbaseurl = "http://electronicgr.com/" #Webhook base URL - currently checks only id the url returns 200 to mark the webhook as called.
 logfile = "log.txt" #Log file path.
