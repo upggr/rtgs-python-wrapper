@@ -4,7 +4,7 @@ Stellar Node Setup.
 On a new Ubuntu  16.04 machine run :
 
 make sure you can connect using :
-ssh root@195.201.17.80 -i ~/.ssh/id_rtgs_rsa
+ssh root@195.201.17.80 -i ~/.ssh/id_rtgs_rsa   (or your key)
 
 sudo -s
 apt-get update
