@@ -13,7 +13,7 @@ def checkbalance(publickey):
     balance = address.balances[0]['balance']
     logwalletbalance(publickey,balance)
     processwebhooks()
-    #printbalancechanges()
+    printbalancechanges()
 
 def createlocaltempdbs():
     cursor = db.cursor()
