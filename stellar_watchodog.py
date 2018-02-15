@@ -12,6 +12,7 @@
 # VARIABLES
 stellar_addresses_file = 'stellar_addresses.json' #Point to a remote json file as per stellar_addreses.json example
 webhookbaseurl = "http://electronicgr.com/" #Webhook base URL
+logfile = "log.txt" #Log file path.
 # END VARIABLES
 
 import threading
@@ -81,9 +82,9 @@ def callwebhook(wallet,balance):
         cursor = db.cursor()
         cursor.execute('''UPDATE webhook_operations SET webhook_notified = ?, webhook_notified_timest = CURRENT_TIMESTAMP WHERE pkey = ? AND balance = ?''', (webhookbaseurl,wallet,balance))
         db.commit()
-        FileSave('log.txt','[INFO]  '+wallet+' balance update to : '+balance+ ' and webhook at '+webhookbaseurl+' was notified at '+ str(datetime.now()) + ' \n')
+        FileSave(logfile,'[INFO]  '+wallet+' balance update to : '+balance+ ' and webhook at '+webhookbaseurl+' was notified at '+ str(datetime.now()) + ' \n')
     else:
-        FileSave('log.txt','[ERROR]  '+wallet+' balance update to : '+balance+ ' and webhook at '+webhookbaseurl+' could NOT be contacted at '+ str(datetime.now()) + ' \n')
+        FileSave(logfile,'[ERROR]  '+wallet+' balance update to : '+balance+ ' and webhook at '+webhookbaseurl+' could NOT be contacted at '+ str(datetime.now()) + ' \n')
 
 def printbalancechanges():
     cursor = db.cursor()
