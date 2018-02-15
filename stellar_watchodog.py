@@ -18,9 +18,8 @@ from datetime import datetime
 
 # VARIABLES
 #thenetwork = "http://195.201.17.80:8000" #URL of your node, for example https://horizon-testnet.stellar.org  (no trailing slash)
-#thenetwork = "https://horizon-testnet.stellar.org" #URL of your node, for example http://195.201.17.80:8000  (no trailing slash)
-thenetwork = "https://s2.ripple.com:51234"
-stellar_addresses_file = 'ripple_addresses.json' #Point to a remote json file as per stellar_addreses.json example
+thenetwork = "https://horizon-testnet.stellar.org" #URL of your node, for example http://195.201.17.80:8000  (no trailing slash)
+stellar_addresses_file = 'stellar_addresses.json' #Point to a remote json file as per stellar_addreses.json example
 webhookbaseurl = "http://electronicgr.com/" #Webhook base URL - currently checks only id the url returns 200 to mark the webhook as called.
 freq = 3.0 #Update frequency in seconds x.x
 logfile = "log.txt" #Log file path.
