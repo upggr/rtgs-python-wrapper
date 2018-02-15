@@ -30,14 +30,21 @@ db = sqlite3.connect(':memory:', check_same_thread=False)
 
 def checkbalance(publickey):
     urlconstruct = thenetwork+'/accounts/'+publickey
-    req = urllib2.Request(urlconstruct)
-    opener = urllib2.build_opener()
-    f = opener.open(req)
-    acctdetails = json.loads(f.read())
-    balance = acctdetails['balances'][0]['balance']
-    logwalletbalance(publickey,balance)
-    processwebhooks()
-    printbalancechanges()
+    try:
+        req = urllib2.Request(urlconstruct)
+         handle = urllib2.urlopen(req)
+    except urllib2.HTTPError, e:
+        print 'Fetching of this balance failed with error code - %s.' % e.code
+        if e.code == 404:
+            print 'this wallet does not exist or wallet not synced yet'
+        else:
+            opener = urllib2.build_opener()
+            f = opener.open(req)
+            acctdetails = json.loads(f.read())
+            balance = acctdetails['balances'][0]['balance']
+            logwalletbalance(publickey,balance)
+            processwebhooks()
+            printbalancechanges()
 
 def createlocaltempdbs():
     cursor = db.cursor()
